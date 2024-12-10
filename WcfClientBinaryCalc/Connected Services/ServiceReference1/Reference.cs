@@ -106,7 +106,7 @@ namespace ServiceReference1
         {
             if ((endpointConfiguration == EndpointConfiguration.BasicHttpBinding_IService1))
             {
-                return new System.ServiceModel.EndpointAddress("http://localhost:52041/Service1.svc");
+                return new System.ServiceModel.EndpointAddress("http://binarycalcservice20241210185014.azurewebsites.net/Service1.svc");
             }
             throw new System.InvalidOperationException(string.Format("Could not find endpoint with name \'{0}\'.", endpointConfiguration));
         }
