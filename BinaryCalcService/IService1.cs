@@ -12,7 +12,7 @@ namespace BinaryCalcService
     public interface IService1
     {
         [OperationContract]
-        double BinaryAdd(double n1, double n2);
+        string BinaryAdd(string n1, string n2);
         
     }
 }
