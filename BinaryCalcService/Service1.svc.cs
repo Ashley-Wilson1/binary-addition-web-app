@@ -102,8 +102,5 @@ namespace BinaryCalcService
             
             return string.IsNullOrEmpty(result) ? "0" : result;
         }
-
-
-
     }
 }

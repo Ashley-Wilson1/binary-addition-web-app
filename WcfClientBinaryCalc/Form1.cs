@@ -22,20 +22,7 @@ namespace WcfClientBinaryCalc
             client.Close();
             Console.WriteLine("closed");
         }
-        private void Add_btn_Click(object sender, EventArgs e)
-        {
-            if (IsBinaryNumber(BinaryInput1.Text) && IsBinaryNumber(BinaryInput2.Text))
-            {
-                //sets label to the output
-                OutputLabel.Text = client.BinaryAdd(BinaryInput1.Text, BinaryInput2.Text);
-            }
-            else
-            {
-                //sets label to error message
-                OutputLabel.Text = "Enter valid binary numbers";
-
-            }
-        }
+       
         public static bool IsBinaryNumber(string input)
         {
             // Check if the input is null or empty
@@ -51,7 +38,20 @@ namespace WcfClientBinaryCalc
 
             return true;
         }
+        private void Add_btn_Click(object sender, EventArgs e)
+        {
+            if (IsBinaryNumber(BinaryInput1.Text) && IsBinaryNumber(BinaryInput2.Text))
+            {
+                //sets label to the output
+                OutputLabel.Text = client.BinaryAdd(BinaryInput1.Text, BinaryInput2.Text);
+            }
+            else
+            {
+                //sets label to error message
+                OutputLabel.Text = "Enter valid binary numbers";
 
+            }
+        }
         private void Sub_btn_Click(object sender, EventArgs e)
         {
             if (IsBinaryNumber(BinaryInput1.Text) && IsBinaryNumber(BinaryInput2.Text))
@@ -66,5 +66,7 @@ namespace WcfClientBinaryCalc
 
             }
         }
+
+
     }
 }
