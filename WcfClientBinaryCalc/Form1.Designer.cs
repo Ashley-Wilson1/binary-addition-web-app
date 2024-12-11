@@ -33,12 +33,13 @@
             BinaryInput2 = new TextBox();
             label1 = new Label();
             OutputLabel = new Label();
+            Sub_btn = new Button();
             SuspendLayout();
             // 
             // Add_btn
             // 
             Add_btn.BackColor = SystemColors.ControlDark;
-            Add_btn.Location = new Point(106, 136);
+            Add_btn.Location = new Point(57, 136);
             Add_btn.Name = "Add_btn";
             Add_btn.Size = new Size(91, 34);
             Add_btn.TabIndex = 0;
@@ -83,12 +84,24 @@
             OutputLabel.TabIndex = 4;
             OutputLabel.TextAlign = ContentAlignment.TopCenter;
             // 
+            // Sub_btn
+            // 
+            Sub_btn.BackColor = SystemColors.ControlDark;
+            Sub_btn.Location = new Point(166, 136);
+            Sub_btn.Name = "Sub_btn";
+            Sub_btn.Size = new Size(91, 34);
+            Sub_btn.TabIndex = 5;
+            Sub_btn.Text = "SUB";
+            Sub_btn.UseVisualStyleBackColor = false;
+            Sub_btn.Click += Sub_btn_Click;
+            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.ControlDarkDark;
             ClientSize = new Size(313, 275);
+            Controls.Add(Sub_btn);
             Controls.Add(OutputLabel);
             Controls.Add(label1);
             Controls.Add(BinaryInput2);
@@ -107,5 +120,6 @@
         private TextBox BinaryInput2;
         private Label label1;
         private Label OutputLabel;
+        private Button Sub_btn;
     }
 }

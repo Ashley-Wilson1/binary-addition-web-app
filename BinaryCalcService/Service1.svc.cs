@@ -48,47 +48,62 @@ namespace BinaryCalcService
                 return new string(sum);
             }
 
-            return new string(sum, 1, sum.Length - 1);
+
+            return new string(sum, 1, sum.Length - 1).TrimStart('0'); //remove the extra space reserved for carry bit and trim.
         }
 
         public string BinarySubtraction(string binary1, string binary2)
         {
             int maxLength = Math.Max(binary1.Length, binary2.Length);
             binary1 = binary1.PadLeft(maxLength, '0');
-            binary2 = binary2.PadLeft(maxLength, '0');  // add padding to make the numbers same length
+            binary2 = binary2.PadLeft(maxLength, '0'); //pad smaller to make same size
 
-            char borrow = '0';
-            string result = "";
+            string result = ""; 
+            bool borrow = false; // Borrow flag for subtraction
 
-            for (int i = maxLength - 1; i >= 0; i--) // right to left for subtraction
+            
+            for (int i = maxLength - 1; i >= 0; i--) //right to left for sub
             {
                 char bit1 = binary1[i];
                 char bit2 = binary2[i];
 
-                // Subtract the bits considering the borrow
-                if (bit1 == '1' && bit2 == '0')
+                
+                if (borrow)
                 {
-                    result = (borrow == '1' ? '0' : '1') + result;
-                    borrow = '0';
+                    if (bit1 == '1') // Adjust for the previous borrow
+                    {
+                        bit1 = '0';
+                        borrow = false;
+                    }
+                    else
+                    {
+                        bit1 = '1'; // If already 0, borrow again
+                    }
                 }
-                else if (bit1 == '0' && bit2 == '1')
+
+                if (bit1 == '0' && bit2 == '1') // Borrow is needed
                 {
-                    result = (borrow == '1' ? '0' : '1') + result;
-                    borrow = '1';
+                    borrow = true;
+                    result = '1' + result; // 0 - 1 + borrow becomes 1
                 }
                 else if (bit1 == bit2) 
                 {
-                    result = (borrow == '1' ? '1' : '0') + result;
-                    borrow = (bit1 == '0') ? '0' : '1';
+                    result = '0' + result; 
+                }
+                else // bit1 is 1 and bit2 is 0
+                {
+                    result = '1' + result; 
                 }
             }
 
-            // Remove leading zeros from the result
+            
             result = result.TrimStart('0');
 
             
-            return string.IsNullOrEmpty(result) ? "0" : result; //return 0 is the trimmed result is 0
+            return string.IsNullOrEmpty(result) ? "0" : result;
         }
+
+
 
     }
 }

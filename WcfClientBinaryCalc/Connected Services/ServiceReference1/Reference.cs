@@ -21,6 +21,12 @@ namespace ServiceReference1
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/BinaryAdd", ReplyAction="http://tempuri.org/IService1/BinaryAddResponse")]
         System.Threading.Tasks.Task<string> BinaryAddAsync(string n1, string n2);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/BinarySubtraction", ReplyAction="http://tempuri.org/IService1/BinarySubtractionResponse")]
+        string BinarySubtraction(string n1, string n2);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/BinarySubtraction", ReplyAction="http://tempuri.org/IService1/BinarySubtractionResponse")]
+        System.Threading.Tasks.Task<string> BinarySubtractionAsync(string n1, string n2);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.2.0-preview1.23462.5")]
@@ -83,6 +89,16 @@ namespace ServiceReference1
             return base.Channel.BinaryAddAsync(n1, n2);
         }
         
+        public string BinarySubtraction(string n1, string n2)
+        {
+            return base.Channel.BinarySubtraction(n1, n2);
+        }
+        
+        public System.Threading.Tasks.Task<string> BinarySubtractionAsync(string n1, string n2)
+        {
+            return base.Channel.BinarySubtractionAsync(n1, n2);
+        }
+        
         public virtual System.Threading.Tasks.Task OpenAsync()
         {
             return System.Threading.Tasks.Task.Factory.FromAsync(((System.ServiceModel.ICommunicationObject)(this)).BeginOpen(null, null), new System.Action<System.IAsyncResult>(((System.ServiceModel.ICommunicationObject)(this)).EndOpen));
@@ -106,7 +122,7 @@ namespace ServiceReference1
         {
             if ((endpointConfiguration == EndpointConfiguration.BasicHttpBinding_IService1))
             {
-                return new System.ServiceModel.EndpointAddress("http://binarycalcservice20241210185014.azurewebsites.net/Service1.svc");
+                return new System.ServiceModel.EndpointAddress("http://localhost:52041/Service1.svc");
             }
             throw new System.InvalidOperationException(string.Format("Could not find endpoint with name \'{0}\'.", endpointConfiguration));
         }

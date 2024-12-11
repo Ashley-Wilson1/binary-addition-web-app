@@ -11,9 +11,9 @@ namespace WcfClientBinaryCalc
             this.FormClosed += MyClosedHandler;
 
             client = new Service1Client();
-            
-          
-            
+
+
+
 
         }
         protected void MyClosedHandler(object sender, EventArgs e)
@@ -24,7 +24,7 @@ namespace WcfClientBinaryCalc
         }
         private void Add_btn_Click(object sender, EventArgs e)
         {
-            if(IsBinaryNumber(BinaryInput1.Text)&& IsBinaryNumber(BinaryInput2.Text))
+            if (IsBinaryNumber(BinaryInput1.Text) && IsBinaryNumber(BinaryInput2.Text))
             {
                 //sets label to the output
                 OutputLabel.Text = client.BinaryAdd(BinaryInput1.Text, BinaryInput2.Text);
@@ -50,6 +50,21 @@ namespace WcfClientBinaryCalc
             }
 
             return true;
+        }
+
+        private void Sub_btn_Click(object sender, EventArgs e)
+        {
+            if (IsBinaryNumber(BinaryInput1.Text) && IsBinaryNumber(BinaryInput2.Text))
+            {
+                //sets label to the output
+                OutputLabel.Text = client.BinarySubtraction(BinaryInput1.Text, BinaryInput2.Text);
+            }
+            else
+            {
+                //sets label to error message
+                OutputLabel.Text = "Enter valid binary numbers";
+
+            }
         }
     }
 }
