@@ -16,7 +16,7 @@ namespace BinaryCalcService
             char[] sum = new char[Math.Max(binary1.Length, binary2.Length) + 1];
             bool carry = false;
 
-            if (binary2.Length > binary1.Length)
+            if (binary2.Length > binary1.Length)// make binary1 longer if not already
             {
                 string c = binary1;
                 binary1 = binary2;
@@ -26,7 +26,7 @@ namespace BinaryCalcService
             for (int i = binary1.Length - 1, j = binary2.Length - 1, k = sum.Length - 1; i >= 0; i--, j--, k--)
             {
                 char numA = binary1[i];
-                char numB = j >= 0 ? binary2[j] : '0';
+                char numB = j >= 0 ? binary2[j] : '0';//if shorter then make the charater 0
 
                 Console.WriteLine(numA + " " + numB);
 
@@ -42,7 +42,7 @@ namespace BinaryCalcService
                 }
             }
 
-            if (carry)
+            if (carry)//if a carry is left over add it to the start
             {
                 sum[0] = '1';
                 return new string(sum);

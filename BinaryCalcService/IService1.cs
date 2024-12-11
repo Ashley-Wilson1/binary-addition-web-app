@@ -13,6 +13,8 @@ namespace BinaryCalcService
     {
         [OperationContract]
         string BinaryAdd(string n1, string n2);
-        
+        string BinarySubtraction(string n1, string n2);
+
+
     }
 }
