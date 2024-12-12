@@ -48,8 +48,15 @@ namespace BinaryCalcService
                 return new string(sum);
             }
 
+            if(new string(sum, 1, sum.Length - 1) == "0" || new string(sum, 1, sum.Length - 1) == "")
+            {
+                return "0";
+            }
+            else
+            {
+                return new string(sum, 1, sum.Length - 1).TrimStart('0'); //remove the extra space reserved for carry bit and trim.
 
-            return new string(sum, 1, sum.Length - 1).TrimStart('0'); //remove the extra space reserved for carry bit and trim.
+            }
         }
 
         public string BinarySubtraction(string binary1, string binary2)
