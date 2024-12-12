@@ -67,7 +67,10 @@ namespace BinaryCalcService
 
             string result = ""; 
             bool borrow = false; // Borrow flag for subtraction
-
+            if (BinaryDecimal(binary1) < BinaryDecimal(binary2))
+            {
+                return "negative result";
+            }
             
             for (int i = maxLength - 1; i >= 0; i--) //right to left for sub
             {
@@ -108,6 +111,27 @@ namespace BinaryCalcService
 
             
             return string.IsNullOrEmpty(result) ? "0" : result;
+        }
+        public int BinaryDecimal(string binaryIn)
+        {
+            if (binaryIn == ""||binaryIn==null)
+            {
+                return 0;
+            }
+            int binary = int.Parse(binaryIn);
+            int decimalValue = 0;
+            // initializing base1 value to 1, i.e 2^0 
+            int base1 = 1;
+
+            while (binary > 0)
+            {
+                int reminder = binary % 10;
+                binary = binary / 10;
+                decimalValue += reminder * base1;
+                base1 = base1 * 2;
+            }
+            return decimalValue;
+            
         }
     }
 }
